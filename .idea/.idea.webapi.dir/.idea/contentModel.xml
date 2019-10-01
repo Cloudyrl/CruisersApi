@@ -34,6 +34,11 @@
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="Persistence" t="Include">
+        <e p="Contexts" t="Include">
+          <e p="AppDbContext.cs" t="Include" />
+        </e>
+      </e>
       <e p="Program.cs" t="Include" />
       <e p="Properties" t="Include">
         <e p="launchSettings.json" t="Include" />
