@@ -38,5 +38,28 @@ namespace CruisersApi.Domain.Services
                 return new SaveCruiserResponse($"An error occurred when saving the Cruiser: {e.Message}");
             }
         }
+
+        public async Task<SaveCruiserResponse> UpdateCruiserAsync(int id, Cruiser cruiser)
+        {
+            var dbCruiser = await _cruiserDao.FindCruiserByIdAsync(id);
+            if (dbCruiser == null) return new SaveCruiserResponse("Cruiser not found");
+            dbCruiser.Name = cruiser.Name;
+            dbCruiser.Line = cruiser.Line;
+            dbCruiser.Model = cruiser.Model;
+            dbCruiser.Status = cruiser.Status;
+            dbCruiser.LoadingShipCap = cruiser.LoadingShipCap;
+            dbCruiser.Picture = cruiser.Picture;
+            dbCruiser.Capacity = cruiser.Capacity;
+            try
+            {
+                _cruiserDao.UpdateCruiser(dbCruiser);
+                await _unitOfWork.CompleteAsync();
+                return new SaveCruiserResponse(dbCruiser);
+            }
+            catch (Exception e)
+            {
+                return new SaveCruiserResponse($"An error occurred when updating the Cruiser: {e.Message}");
+            }
+        }
     }
 }

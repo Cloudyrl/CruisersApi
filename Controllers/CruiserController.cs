@@ -40,5 +40,17 @@ namespace CruisersApi.Controllers
             var cruiserDto = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
             return Ok(cruiserDto);
         }
+
+        [HttpPut("{id}")]
+
+        public async Task<IActionResult> PutAsync(int id,[FromBody] SaveCruiserDto saveCruiserDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
+            var cruiser = _mapper.Map<SaveCruiserDto, Cruiser>(saveCruiserDto);
+            var response = await _cruiserService.UpdateCruiserAsync(id,cruiser);
+            if (!response.Success) return BadRequest(response.Message);
+            var savedCruiser = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
+            return Ok(savedCruiser);
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace CruisersApi.Domain.Services
     {
         Task<IEnumerable<Cruiser>> GetCruisersAsync();
         Task<SaveCruiserResponse> SaveCruiserAsync(Cruiser cruiser);
+
+        Task<SaveCruiserResponse> UpdateCruiserAsync(int id,Cruiser cruiser);
     }
 }

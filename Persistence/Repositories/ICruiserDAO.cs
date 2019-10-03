@@ -9,5 +9,8 @@ namespace CruisersApi.Domain.Repository
     { 
         Task<IEnumerable<Cruiser>> GetCruisersAsync();
         Task SaveCrusierAsync(Cruiser cruiser);
+        Task<Cruiser> FindCruiserByIdAsync(int id);
+
+        void UpdateCruiser(Cruiser cruiser);
     }
 }

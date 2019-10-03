@@ -19,5 +19,15 @@ namespace CruisersApi.Domain.Repository
         {
             await _context.Cruiser.AddAsync(cruiser);
         }
+
+        public async Task<Cruiser> FindCruiserByIdAsync(int id)
+        {
+            return await _context.Cruiser.FindAsync(id);
+        }
+
+        public void UpdateCruiser(Cruiser cruiser)
+        {
+            _context.Cruiser.Update(cruiser);
+        }
     }
 }
