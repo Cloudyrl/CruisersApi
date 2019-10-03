@@ -15,5 +15,7 @@ namespace CruisersApi.Domain.Services
         Task<CruiserResponse> SaveCruiserAsync(Cruiser cruiser);
 
         Task<CruiserResponse> UpdateCruiserAsync(int id,Cruiser cruiser);
+
+        Task<CruiserResponse> DeleteCruiserAsync(int id);
     }
 }

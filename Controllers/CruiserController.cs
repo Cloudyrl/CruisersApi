@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace CruisersApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CruiserDto>> GetCategoriesAsync()
+        public async Task<IEnumerable<CruiserDto>> GetAsync()
         {
             var cruisers = await _cruiserService.GetCruisersAsync();
             var cruisersDto = _mapper.Map<IEnumerable<Cruiser>, IEnumerable<CruiserDto>>(cruisers);
@@ -60,6 +61,15 @@ namespace CruisersApi.Controllers
             if (!response.Success) return BadRequest(response.Message);
             var savedCruiser = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
             return Ok(savedCruiser);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var response = await _cruiserService.DeleteCruiserAsync(id);
+            if (!response.Success) return BadRequest(response.Message);
+            var deletedCruiser = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
+            return Ok(deletedCruiser);
         }
     }
 }

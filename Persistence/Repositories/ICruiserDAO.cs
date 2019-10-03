@@ -12,5 +12,7 @@ namespace CruisersApi.Domain.Repository
         Task<Cruiser> FindCruiserByIdAsync(int id);
 
         void UpdateCruiser(Cruiser cruiser);
+
+        void DeleteCruiser(Cruiser cruiser);
     }
 }

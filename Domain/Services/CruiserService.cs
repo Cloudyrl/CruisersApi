@@ -69,5 +69,21 @@ namespace CruisersApi.Domain.Services
                 return new CruiserResponse($"An error occurred when updating the Cruiser: {e.Message}");
             }
         }
+
+        public async Task<CruiserResponse> DeleteCruiserAsync(int id)
+        {
+            var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
+            if(cruiser == null) return new CruiserResponse("Cruiser not found");
+            try
+            {
+                _cruiserDao.DeleteCruiser(cruiser);
+                await _unitOfWork.CompleteAsync();
+                return new CruiserResponse(cruiser);
+            }
+            catch (Exception e)
+            {
+                return new CruiserResponse($"An error occurred when deleting the Cruiser: {e.Message}");
+            }
+        }
     }
 }

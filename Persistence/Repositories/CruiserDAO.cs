@@ -29,5 +29,10 @@ namespace CruisersApi.Domain.Repository
         {
             _context.Cruiser.Update(cruiser);
         }
+
+        public void DeleteCruiser(Cruiser cruiser)
+        {
+            _context.Cruiser.Remove(cruiser);
+        }
     }
 }
