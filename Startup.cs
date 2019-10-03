@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using CruisersApi.Domain.Repository;
 using CruisersApi.Domain.Services;
+using CruisersApi.Mapping;
 using CruisersApi.Persistence.Contexts;
 
 namespace CruisersApi
@@ -30,6 +32,7 @@ namespace CruisersApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(EntityToDtoProfile));
             services.AddMvc();
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => 
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")).EnableSensitiveDataLogging());
