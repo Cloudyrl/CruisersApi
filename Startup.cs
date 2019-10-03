@@ -34,8 +34,8 @@ namespace CruisersApi
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => 
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")));
             
-            services.AddScoped<ICategoryDAO, CategoryDAO>();
-            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICruiserDAO, CruiserDAO>();
+            services.AddScoped<ICruiserService, CruiserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

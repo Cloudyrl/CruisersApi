@@ -5,8 +5,8 @@ using CruisersApi.Domain.Entities;
 
 namespace CruisersApi.Domain.Repository
 {
-    public interface ICategoryDAO
+    public interface ICruiserDAO
     {
-        Task<IEnumerable<Category>> GetCategories();
+        Task<IEnumerable<Category>> GetCruisersAsync();
     }
 }

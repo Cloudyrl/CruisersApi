@@ -7,12 +7,12 @@ using CruisersApi.Persistence.Repositories;
 
 namespace CruisersApi.Domain.Repository
 {
-    public class CategoryDAO: BaseRepository ,ICategoryDAO
+    public class CruiserDAO: BaseRepository ,ICruiserDAO
     {
-        public CategoryDAO(AppDbContext context) : base(context){}
-        public async Task<IEnumerable<Category>> GetCategories()
+        public CruiserDAO(AppDbContext context) : base(context){}
+        public async Task<IEnumerable<Category>> GetCruisersAsync()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Cruisers.ToListAsync();
         }
     }
 }

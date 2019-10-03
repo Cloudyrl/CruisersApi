@@ -9,18 +9,18 @@ namespace CruisersApi.Controllers
 {
     public class CategoriesController : Controller
     {
-        private ICategoryService _categoryService;
+        private ICruiserService _cruiserService;
         
-        public CategoriesController(ICategoryService categoryService)
+        public CategoriesController(ICruiserService cruiserService)
         {
-            _categoryService = categoryService;
+            _cruiserService = cruiserService;
         }
 
         [Route("/api/[Controller]")]
         // GET
-        public Task<IEnumerable<Category>> GetCategoriesAsync()
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            var response = _categoryService.GetCategoriesAsync();
+            var response = await _cruiserService.GetCruisersAsync();
             return response;
         }
     }
