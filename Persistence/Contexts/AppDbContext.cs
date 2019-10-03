@@ -5,33 +5,55 @@ namespace CruisersApi.Persistence.Contexts
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public DbSet<Cruiser> Cruiser { get; set; }
+        public DbSet<Layover> Layover { get; set; }
+        public DbSet<Location> Locations { get; set; }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Category>().ToTable("Categories");
-            modelBuilder.Entity<Category>().HasKey(p => p.Id);
-            modelBuilder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            modelBuilder.Entity<Category>().Property(p => p.Name).IsRequired().HasMaxLength(30);
-            modelBuilder.Entity<Category>().HasMany(p => p.Products).WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryId);
+            modelBuilder.Entity<Cruiser>().ToTable("Cruiser");
+            modelBuilder.Entity<Cruiser>().HasKey(p => p.Id);
+            modelBuilder.Entity<Cruiser>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            modelBuilder.Entity<Cruiser>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Cruiser>().Property(p => p.Model).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Cruiser>().Property(p => p.Line).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Cruiser>().Property(p => p.Picture);
+            modelBuilder.Entity<Cruiser>().Property(p => p.Status).IsRequired();
+            modelBuilder.Entity<Cruiser>().Property(p => p.LoadingShipCap).IsRequired();
+            modelBuilder.Entity<Cruiser>().Property(p => p.Capacity).IsRequired();
+            modelBuilder.Entity<Cruiser>().HasMany(p => p.Layovers).WithOne(p => p.Cruiser)
+                .HasForeignKey(p => p.CruiserId);
 
-            modelBuilder.Entity<Category>().HasData
+            modelBuilder.Entity<Cruiser>().HasData
             (
-                new Category { Id = 100, Name = "Fruits"},
-                new Category { Id=101,Name = "Dairy" },
-                new Category { Id= 102,Name = "Cleaning"}
+                new Cruiser { Id = 100, Name = "Titanic", Model = "RMS Titanic", Line = "Transatlantic",Status = true , LoadingShipCap = 15000, Capacity = 5000},
+                new Cruiser { Id = 101, Name = "Concord", Model = "Concord", Line = "Transatlantic",Status = true , LoadingShipCap = 7000, Capacity = 2500}
                 );
 
-            modelBuilder.Entity<Product>().ToTable("Products");
-            modelBuilder.Entity<Product>().HasKey(p => p.Id);
-            modelBuilder.Entity<Product>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
-            modelBuilder.Entity<Product>().Property(p => p.QuantityInPackage).IsRequired();
-            modelBuilder.Entity<Product>().Property(p => p.UnitOfMeasurement).IsRequired();
+            modelBuilder.Entity<Layover>().ToTable("Layover");
+            modelBuilder.Entity<Layover>().HasKey(p => p.Id);
+            modelBuilder.Entity<Layover>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            modelBuilder.Entity<Layover>().Property(p => p.Price).IsRequired();
+            modelBuilder.Entity<Layover>().Property(p => p.ArrivalDate).IsRequired();
+            modelBuilder.Entity<Layover>().Property(p => p.DepartureDate).IsRequired();
+            modelBuilder.Entity<Layover>().Property(p => p.LocArrival).IsRequired();
+            modelBuilder.Entity<Layover>().Property(p => p.LocDeparture).IsRequired();
+
+            modelBuilder.Entity<Location>().ToTable("Location");
+            modelBuilder.Entity<Location>().HasKey(p => p.Id);
+            modelBuilder.Entity<Location>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            modelBuilder.Entity<Location>().Property(p => p.City).HasMaxLength(30);
+            modelBuilder.Entity<Location>().Property(p => p.Country).HasMaxLength(30);
+
+            modelBuilder.Entity<Location>().HasData
+            (
+                new Location {Id = 1, City = "Miami", Country = "United States"},
+                new Location {Id =2 ,City = "Panama City", Country = "Panama"},
+                new Location {Id = 3, City = "La Guaira", Country = "Venezuela"}
+            );
         }
     }
 }

@@ -10,9 +10,9 @@ namespace CruisersApi.Domain.Repository
     public class CruiserDAO: BaseRepository ,ICruiserDAO
     {
         public CruiserDAO(AppDbContext context) : base(context){}
-        public async Task<IEnumerable<Category>> GetCruisersAsync()
+        public async Task<IEnumerable<Cruiser>> GetCruisersAsync()
         {
-            return await _context.Cruisers.ToListAsync();
+            return await _context.Cruiser.ToListAsync();
         }
     }
 }

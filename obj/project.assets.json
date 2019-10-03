@@ -852,19 +852,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cloudy\\.nuget\\packages\\": {}
+    "C:\\Users\\rliendo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
+      "projectUniqueName": "C:\\Users\\rliendo\\Projects\\.netProjects\\CruisersApi\\CruisersApi.csproj",
       "projectName": "CruisersApi",
-      "projectPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
-      "packagesPath": "C:\\Users\\Cloudy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\obj\\",
+      "projectPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\CruisersApi\\CruisersApi.csproj",
+      "packagesPath": "C:\\Users\\rliendo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\CruisersApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Cloudy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rliendo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"

@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
+    "projectUniqueName": "C:\\Users\\rliendo\\Projects\\.netProjects\\CruisersApi\\CruisersApi.csproj",
     "projectName": "CruisersApi",
-    "projectPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
-    "outputPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\obj\\",
+    "projectPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\CruisersApi\\CruisersApi.csproj",
+    "outputPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\CruisersApi\\obj\\",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp3.0"

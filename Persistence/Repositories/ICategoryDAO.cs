@@ -7,6 +7,6 @@ namespace CruisersApi.Domain.Repository
 {
     public interface ICruiserDAO
     {
-        Task<IEnumerable<Category>> GetCruisersAsync();
+        Task<IEnumerable<Cruiser>> GetCruisersAsync();
     }
 }

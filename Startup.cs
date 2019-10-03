@@ -32,8 +32,7 @@ namespace CruisersApi
         {
             services.AddMvc();
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => 
-                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")));
-            
+                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")).EnableSensitiveDataLogging());
             services.AddScoped<ICruiserDAO, CruiserDAO>();
             services.AddScoped<ICruiserService, CruiserService>();
         }
