@@ -17,6 +17,7 @@ using CruisersApi.Domain.Repository;
 using CruisersApi.Domain.Services;
 using CruisersApi.Mapping;
 using CruisersApi.Persistence.Contexts;
+using CruisersApi.Persistence.Repositories;
 
 namespace CruisersApi
 {
@@ -32,12 +33,13 @@ namespace CruisersApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(EntityToDtoProfile));
+            services.AddAutoMapper(typeof(EntityToDtoProfile),typeof(DtoToEntityProfile));
             services.AddMvc();
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => 
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")).EnableSensitiveDataLogging());
             services.AddScoped<ICruiserDAO, CruiserDAO>();
             services.AddScoped<ICruiserService, CruiserService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
