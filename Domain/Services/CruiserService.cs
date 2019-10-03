@@ -25,32 +25,32 @@ namespace CruisersApi.Domain.Services
            return await _cruiserDao.GetCruisersAsync();
         }
 
-        public async Task<SaveCruiserResponse> GetCruiserByIdAsync(int id)
+        public async Task<CruiserResponse> GetCruiserByIdAsync(int id)
         {
             var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
             if(cruiser == null) 
-                return new SaveCruiserResponse("Cruiser not found");
-            return new SaveCruiserResponse(cruiser);
+                return new CruiserResponse("Cruiser not found");
+            return new CruiserResponse(cruiser);
         }
 
-        public async Task<SaveCruiserResponse> SaveCruiserAsync(Cruiser cruiser)
+        public async Task<CruiserResponse> SaveCruiserAsync(Cruiser cruiser)
         {
             try
             {
                 await _cruiserDao.SaveCrusierAsync(cruiser);
                 await _unitOfWork.CompleteAsync();
-                return new SaveCruiserResponse(cruiser);
+                return new CruiserResponse(cruiser);
             }
             catch (Exception e)
             {
-                return new SaveCruiserResponse($"An error occurred when saving the Cruiser: {e.Message}");
+                return new CruiserResponse($"An error occurred when saving the Cruiser: {e.Message}");
             }
         }
 
-        public async Task<SaveCruiserResponse> UpdateCruiserAsync(int id, Cruiser cruiser)
+        public async Task<CruiserResponse> UpdateCruiserAsync(int id, Cruiser cruiser)
         {
             var dbCruiser = await _cruiserDao.FindCruiserByIdAsync(id);
-            if (dbCruiser == null) return new SaveCruiserResponse("Cruiser not found");
+            if (dbCruiser == null) return new CruiserResponse("Cruiser not found");
             dbCruiser.Name = cruiser.Name;
             dbCruiser.Line = cruiser.Line;
             dbCruiser.Model = cruiser.Model;
@@ -62,11 +62,11 @@ namespace CruisersApi.Domain.Services
             {
                 _cruiserDao.UpdateCruiser(dbCruiser);
                 await _unitOfWork.CompleteAsync();
-                return new SaveCruiserResponse(dbCruiser);
+                return new CruiserResponse(dbCruiser);
             }
             catch (Exception e)
             {
-                return new SaveCruiserResponse($"An error occurred when updating the Cruiser: {e.Message}");
+                return new CruiserResponse($"An error occurred when updating the Cruiser: {e.Message}");
             }
         }
     }
