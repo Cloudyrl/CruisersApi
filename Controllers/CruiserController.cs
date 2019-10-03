@@ -18,7 +18,7 @@ namespace CruisersApi.Controllers
 
         [Route("/api/[Controller]")]
         // GET
-        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        public async Task<IEnumerable<Cruiser>> GetCategoriesAsync()
         {
             var response = await _cruiserService.GetCruisersAsync();
             return response;
