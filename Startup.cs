@@ -12,11 +12,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using webapi.Domain.Repository;
-using webapi.Domain.Services;
-using webapi.Persistence.Contexts;
+using CruisersApi.Domain.Repository;
+using CruisersApi.Domain.Services;
+using CruisersApi.Persistence.Contexts;
 
-namespace webapi
+namespace CruisersApi
 {
     public class Startup
     {
@@ -33,7 +33,7 @@ namespace webapi
             services.AddMvc();
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => 
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")));
-
+            
             services.AddScoped<ICategoryDAO, CategoryDAO>();
             services.AddScoped<ICategoryService, CategoryService>();
         }

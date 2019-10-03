@@ -7,9 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using webapi.Persistence.Contexts;
+using CruisersApi.Persistence.Contexts;
 
-namespace webapi
+namespace CruisersApi
 {
     public class Program
     {

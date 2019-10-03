@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace webapi.Domain.Entities
+namespace CruisersApi.Domain.Entities
 {
     public enum EUnitOfMeasurement : byte
     {

@@ -1,6 +1,6 @@
-using webapi.Persistence.Contexts;
+using CruisersApi.Persistence.Contexts;
 
-namespace webapi.Persistence.Repositories
+namespace CruisersApi.Persistence.Repositories
 {
     public abstract class BaseRepository
     {

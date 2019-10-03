@@ -1,4 +1,4 @@
-﻿namespace webapi.Domain.Entities
+﻿namespace CruisersApi.Domain.Entities
 {
     public class Product
     {

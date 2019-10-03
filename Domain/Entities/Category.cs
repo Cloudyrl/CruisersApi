@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace webapi.Domain.Entities
+namespace CruisersApi.Domain.Entities
 {
     public class Category
     {

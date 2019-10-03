@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\rliendo\\Projects\\.netProjects\\webapi\\webapi.csproj",
-    "projectName": "webapi",
-    "projectPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\webapi\\webapi.csproj",
-    "outputPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\webapi\\obj\\",
+    "projectUniqueName": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
+    "projectName": "CruisersApi",
+    "projectPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
+    "outputPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\obj\\",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp3.0"

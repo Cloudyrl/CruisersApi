@@ -852,19 +852,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rliendo\\.nuget\\packages\\": {}
+    "C:\\Users\\Cloudy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rliendo\\Projects\\.netProjects\\webapi\\webapi.csproj",
-      "projectName": "webapi",
-      "projectPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\webapi\\webapi.csproj",
-      "packagesPath": "C:\\Users\\rliendo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rliendo\\Projects\\.netProjects\\webapi\\obj\\",
+      "projectUniqueName": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
+      "projectName": "CruisersApi",
+      "projectPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\CruisersApi.csproj",
+      "packagesPath": "C:\\Users\\Cloudy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Cloudy\\RiderProjects\\CruisersApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rliendo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Cloudy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -908,16 +908,7 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

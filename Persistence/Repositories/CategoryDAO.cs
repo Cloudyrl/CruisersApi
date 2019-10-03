@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using webapi.Domain.Entities;
-using webapi.Persistence.Contexts;
-using webapi.Persistence.Repositories;
+using CruisersApi.Domain.Entities;
+using CruisersApi.Persistence.Contexts;
+using CruisersApi.Persistence.Repositories;
 
-namespace webapi.Domain.Repository
+namespace CruisersApi.Domain.Repository
 {
     public class CategoryDAO: BaseRepository ,ICategoryDAO
     {

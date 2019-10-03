@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using webapi.Domain.Entities;
+using CruisersApi.Domain.Entities;
 
-namespace webapi.Persistence.Contexts
+namespace CruisersApi.Persistence.Contexts
 {
     public class AppDbContext : DbContext
     {

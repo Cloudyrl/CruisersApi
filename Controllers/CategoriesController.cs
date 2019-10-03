@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using webapi.Domain.Entities;
-using webapi.Domain.Services;
+using CruisersApi.Domain.Entities;
+using CruisersApi.Domain.Services;
 
-namespace webapi.Controllers
+namespace CruisersApi.Controllers
 {
     public class CategoriesController : Controller
     {

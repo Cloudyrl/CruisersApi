@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using webapi.Domain.Entities;
-using webapi.Domain.Repository;
+using CruisersApi.Domain.Entities;
+using CruisersApi.Domain.Repository;
 
-namespace webapi.Domain.Services
+namespace CruisersApi.Domain.Services
 {
     public class CategoryService : ICategoryService
     {

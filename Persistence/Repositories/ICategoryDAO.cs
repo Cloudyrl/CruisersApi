@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using webapi.Domain.Entities;
+using CruisersApi.Domain.Entities;
 
-namespace webapi.Domain.Repository
+namespace CruisersApi.Domain.Repository
 {
     public interface ICategoryDAO
     {
