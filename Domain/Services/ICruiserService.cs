@@ -7,6 +7,6 @@ namespace CruisersApi.Domain.Services
 {
     public interface ICruiserService 
     {
-        Task<IEnumerable<Category>> GetCruisersAsync();
+        Task<IEnumerable<Cruiser>> GetCruisersAsync();
     }
 }

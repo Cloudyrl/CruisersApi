@@ -7,11 +7,11 @@ using CruisersApi.Domain.Services;
 
 namespace CruisersApi.Controllers
 {
-    public class CategoriesController : Controller
+    public class CruiserController : Controller
     {
         private ICruiserService _cruiserService;
         
-        public CategoriesController(ICruiserService cruiserService)
+        public CruiserController(ICruiserService cruiserService)
         {
             _cruiserService = cruiserService;
         }

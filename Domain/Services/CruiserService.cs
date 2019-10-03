@@ -14,7 +14,7 @@ namespace CruisersApi.Domain.Services
             _cruiserDao = cruiserDao; 
         }
 
-        public async Task<IEnumerable<Category>> GetCruisersAsync()
+        public async Task<IEnumerable<Cruiser>> GetCruisersAsync()
         {
            return await _cruiserDao.GetCruisersAsync();
         }
