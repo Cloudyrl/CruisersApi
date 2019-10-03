@@ -30,6 +30,15 @@ namespace CruisersApi.Controllers
             return cruisersDto;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCruiserByIdAsync(int id)
+        {
+            var response = await _cruiserService.GetCruiserByIdAsync(id);
+            if (!response.Success) return NotFound();
+            var cruiserDto = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
+            return Ok(cruiserDto);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveCruiserDto saveCruiserDto)
         {

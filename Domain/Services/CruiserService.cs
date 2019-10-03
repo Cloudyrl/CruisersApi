@@ -25,6 +25,14 @@ namespace CruisersApi.Domain.Services
            return await _cruiserDao.GetCruisersAsync();
         }
 
+        public async Task<SaveCruiserResponse> GetCruiserByIdAsync(int id)
+        {
+            var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
+            if(cruiser == null) 
+                return new SaveCruiserResponse("Cruiser not found");
+            return new SaveCruiserResponse(cruiser);
+        }
+
         public async Task<SaveCruiserResponse> SaveCruiserAsync(Cruiser cruiser)
         {
             try
