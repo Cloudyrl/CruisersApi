@@ -1,22 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using CruisersApi.Domain.Communication;
 using CruisersApi.Domain.Entities;
 using CruisersApi.Domain.Repository;
+using CruisersApi.Persistence.Repositories;
+using CruisersApi.Resources;
 
 namespace CruisersApi.Domain.Services
 {
     public class CruiserService : ICruiserService
     {
         private readonly ICruiserDAO _cruiserDao;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CruiserService(ICruiserDAO cruiserDao)
+        public CruiserService(ICruiserDAO cruiserDao, IUnitOfWork unitOfWork)
         {
-            _cruiserDao = cruiserDao; 
+            _cruiserDao = cruiserDao;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Cruiser>> GetCruisersAsync()
         {
            return await _cruiserDao.GetCruisersAsync();
+        }
+
+        public async Task<SaveCruiserResponse> SaveCruiserAsync(Cruiser cruiser)
+        {
+            try
+            {
+                await _cruiserDao.SaveCrusierAsync(cruiser);
+                await _unitOfWork.CompleteAsync();
+                return new SaveCruiserResponse(cruiser);
+            }
+            catch (Exception e)
+            {
+                return new SaveCruiserResponse($"An error occurred when saving the Cruiser: {e.Message}");
+            }
         }
     }
 }

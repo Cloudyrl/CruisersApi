@@ -6,7 +6,8 @@ using CruisersApi.Domain.Entities;
 namespace CruisersApi.Domain.Repository
 {
     public interface ICruiserDAO
-    {
+    { 
         Task<IEnumerable<Cruiser>> GetCruisersAsync();
+        Task SaveCrusierAsync(Cruiser cruiser);
     }
 }

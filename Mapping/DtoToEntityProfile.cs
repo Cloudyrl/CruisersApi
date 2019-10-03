@@ -1,7 +1,14 @@
-﻿namespace CruisersApi.Mapping
+﻿using AutoMapper;
+using CruisersApi.Domain.Entities;
+using CruisersApi.Resources;
+
+namespace CruisersApi.Mapping
 {
-    public class DtoToEntityProfile
+    public class DtoToEntityProfile: Profile
     {
-        
+        public DtoToEntityProfile()
+        {
+            CreateMap<SaveCruiserDto, Cruiser>();
+        }
     }
 }

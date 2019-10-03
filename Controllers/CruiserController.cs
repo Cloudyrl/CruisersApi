@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using CruisersApi.Domain.Entities;
 using CruisersApi.Domain.Services;
 using CruisersApi.Resources;
+using CruisersApi.Extensions;
 
 namespace CruisersApi.Controllers
 {
+    [Route("/api/[Controller]")]
     public class CruiserController : Controller
     {
         private ICruiserService _cruiserService;
@@ -20,13 +22,23 @@ namespace CruisersApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("/api/[Controller]")]
-        // GET
+        [HttpGet]
         public async Task<IEnumerable<CruiserDto>> GetCategoriesAsync()
         {
             var cruisers = await _cruiserService.GetCruisersAsync();
             var cruisersDto = _mapper.Map<IEnumerable<Cruiser>, IEnumerable<CruiserDto>>(cruisers);
             return cruisersDto;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveCruiserDto saveCruiserDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
+            var cruiser = _mapper.Map<SaveCruiserDto, Cruiser>(saveCruiserDto);
+            var response = await _cruiserService.SaveCruiserAsync(cruiser);
+            if (!response.Success) return BadRequest(response.Message);
+            var cruiserDto = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
+            return Ok(cruiserDto);
         }
     }
 }

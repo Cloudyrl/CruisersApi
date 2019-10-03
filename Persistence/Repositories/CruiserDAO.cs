@@ -14,5 +14,10 @@ namespace CruisersApi.Domain.Repository
         {
             return await _context.Cruiser.ToListAsync();
         }
+
+        public async Task SaveCrusierAsync(Cruiser cruiser)
+        {
+            await _context.Cruiser.AddAsync(cruiser);
+        }
     }
 }
