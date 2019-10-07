@@ -9,6 +9,7 @@ namespace CruisersApi.Mapping
         public EntityToDtoProfile()
         {
             CreateMap<Cruiser, CruiserDto>();
+            CreateMap<Layover, LayoverDto>();
         }
     }
 }
