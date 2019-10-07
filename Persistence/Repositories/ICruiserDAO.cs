@@ -14,5 +14,7 @@ namespace CruisersApi.Domain.Repository
         void UpdateCruiser(Cruiser cruiser);
 
         void DeleteCruiser(Cruiser cruiser);
+
+        Task<IEnumerable<Layover>> GetLayoverAsync(int id);
     }
 }

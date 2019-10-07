@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using CruisersApi.Domain.Entities;
@@ -33,6 +34,11 @@ namespace CruisersApi.Domain.Repository
         public void DeleteCruiser(Cruiser cruiser)
         {
             _context.Cruiser.Remove(cruiser);
+        }
+
+        public async Task<IEnumerable<Layover>> GetLayoverAsync(int id)
+        {
+           return await _context.Layover.Where(l => l.CruiserId == id).ToListAsync();
         }
     }
 }
