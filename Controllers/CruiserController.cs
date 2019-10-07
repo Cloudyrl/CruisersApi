@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,7 @@ namespace CruisersApi.Controllers
     {
         private ICruiserService _cruiserService;
         private IMapper _mapper;
-        
+
         public CruiserController(ICruiserService cruiserService, IMapper mapper)
         {
             _cruiserService = cruiserService;
@@ -53,11 +53,11 @@ namespace CruisersApi.Controllers
 
         [HttpPut("{id}")]
 
-        public async Task<IActionResult> PutAsync(int id,[FromBody] SaveCruiserDto saveCruiserDto)
+        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCruiserDto saveCruiserDto)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
             var cruiser = _mapper.Map<SaveCruiserDto, Cruiser>(saveCruiserDto);
-            var response = await _cruiserService.UpdateCruiserAsync(id,cruiser);
+            var response = await _cruiserService.UpdateCruiserAsync(id, cruiser);
             if (!response.Success) return BadRequest(response.Message);
             var savedCruiser = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
             return Ok(savedCruiser);
@@ -70,6 +70,15 @@ namespace CruisersApi.Controllers
             if (!response.Success) return BadRequest(response.Message);
             var deletedCruiser = _mapper.Map<Cruiser, CruiserDto>(response.Cruiser);
             return Ok(deletedCruiser);
+        }
+
+        [HttpGet("{id}/Layover")]
+
+        public async Task<IEnumerable<LayoverDto>> GetLayoverAsync(int id)
+        {
+            var layovers = await _cruiserService.GetLayoverAsync(id);
+            var layoverDto = _mapper.Map<IEnumerable<Layover>, IEnumerable<LayoverDto>>(layovers);
+            return layoverDto;
         }
     }
 }

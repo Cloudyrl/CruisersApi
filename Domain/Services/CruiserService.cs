@@ -27,10 +27,17 @@ namespace CruisersApi.Domain.Services
 
         public async Task<CruiserResponse> GetCruiserByIdAsync(int id)
         {
-            var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
-            if(cruiser == null) 
-                return new CruiserResponse("Cruiser not found");
-            return new CruiserResponse(cruiser);
+            try
+            {
+                var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
+                if(cruiser == null) 
+                    return new CruiserResponse("Cruiser not found");
+                return new CruiserResponse(cruiser);
+            }
+            catch (Exception e)
+            {
+                return new CruiserResponse($"An error occurred when saving the Cruiser: {e.Message}");
+            }
         }
 
         public async Task<CruiserResponse> SaveCruiserAsync(Cruiser cruiser)
@@ -49,17 +56,17 @@ namespace CruisersApi.Domain.Services
 
         public async Task<CruiserResponse> UpdateCruiserAsync(int id, Cruiser cruiser)
         {
-            var dbCruiser = await _cruiserDao.FindCruiserByIdAsync(id);
-            if (dbCruiser == null) return new CruiserResponse("Cruiser not found");
-            dbCruiser.Name = cruiser.Name;
-            dbCruiser.Line = cruiser.Line;
-            dbCruiser.Model = cruiser.Model;
-            dbCruiser.Status = cruiser.Status;
-            dbCruiser.LoadingShipCap = cruiser.LoadingShipCap;
-            dbCruiser.Picture = cruiser.Picture;
-            dbCruiser.Capacity = cruiser.Capacity;
             try
             {
+                var dbCruiser = await _cruiserDao.FindCruiserByIdAsync(id);
+                if (dbCruiser == null) return new CruiserResponse("Cruiser not found");
+                dbCruiser.Name = cruiser.Name;
+                dbCruiser.Line = cruiser.Line;
+                dbCruiser.Model = cruiser.Model;
+                dbCruiser.Status = cruiser.Status;
+                dbCruiser.LoadingShipCap = cruiser.LoadingShipCap;
+                dbCruiser.Picture = cruiser.Picture;
+                dbCruiser.Capacity = cruiser.Capacity;
                 _cruiserDao.UpdateCruiser(dbCruiser);
                 await _unitOfWork.CompleteAsync();
                 return new CruiserResponse(dbCruiser);
@@ -72,10 +79,10 @@ namespace CruisersApi.Domain.Services
 
         public async Task<CruiserResponse> DeleteCruiserAsync(int id)
         {
-            var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
-            if(cruiser == null) return new CruiserResponse("Cruiser not found");
             try
             {
+                var cruiser = await _cruiserDao.FindCruiserByIdAsync(id);
+                if(cruiser == null) return new CruiserResponse("Cruiser not found");
                 _cruiserDao.DeleteCruiser(cruiser);
                 await _unitOfWork.CompleteAsync();
                 return new CruiserResponse(cruiser);
@@ -84,6 +91,11 @@ namespace CruisersApi.Domain.Services
             {
                 return new CruiserResponse($"An error occurred when deleting the Cruiser: {e.Message}");
             }
+        }
+
+        public async Task<IEnumerable<Layover>> GetLayoverAsync(int id)
+        {
+           return await _cruiserDao.GetLayoverAsync(id);
         }
     }
 }
